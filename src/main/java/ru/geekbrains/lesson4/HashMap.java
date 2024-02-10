@@ -7,6 +7,26 @@ package ru.geekbrains.lesson4;
  */
 public class HashMap <K, V> {
 
+    //region Домашнее задание: Переопределение метода toString()
+
+    @Override
+    public String toString() {
+        System.out.println("Список контактов: ");
+        for (Bucket<K, V> bucket: buckets) {
+            if (bucket !=null) {
+                Bucket<K, V>.Node currentNode = bucket.head;
+                System.out.println("Номер телефона: " + currentNode.value.key + " - " + "Имя: " + currentNode.value.value);
+                while (currentNode.next != null) {
+                    System.out.println("Номер телефона: " + currentNode.next.value.key + " - " + "Имя: " + currentNode.next.value.value);
+                    currentNode = currentNode.next;
+                }
+            }
+        }
+        return "Конец";
+    }
+
+    //endregion
+
     //region Публичные методы
 
     public V put(K key, V value){
